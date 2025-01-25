@@ -1,5 +1,8 @@
 * {
     background-color: #A8D5BA;
+    font-family: 'M PLUS 1', serif; 
+    font-optical-sizing: auto; font-weight: 600; 
+    font-style: normal
 
 }
 
@@ -10,7 +13,16 @@ html {
 
 h1 {
     color: #f44336; 
-    font-family: 'M PLUS 1', serif; 
-    font-optical-sizing: auto; font-weight: 600; 
-    font-style: normal
+    
+}
+
+input[type=text] {
+	appearance: none;
+	border: none;
+	outline: none;
+	border-bottom: .2em solid #29b6f6;
+	background: rgba(#29b6f6, .2);
+	border-radius: .2em .2em 0 0;
+	padding: .4em;
+	color: #29b6f6;
 }
