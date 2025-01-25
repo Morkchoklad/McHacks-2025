@@ -2,3 +2,15 @@
     background-color: #A8D5BA;
 
 }
+
+html {
+    height: 100%; 
+    overflow: hidden;
+}
+
+h1 {
+    color: #f44336; 
+    font-family: 'M PLUS 1', serif; 
+    font-optical-sizing: auto; font-weight: 600; 
+    font-style: normal
+}
