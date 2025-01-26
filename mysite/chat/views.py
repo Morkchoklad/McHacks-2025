@@ -15,7 +15,6 @@ def chat(request):
 
 def send_message(request, message, user):
     new_message = Message.objects.create(username = user,text = message)
-
     location = 'http://127.0.0.1:8000/chat/chat/'
     res = HttpResponse(location, status=302)
     res['Location'] = location
@@ -29,13 +28,13 @@ def game(request):
     return render(request, "chat/game.html")
 
 def time(request, severity, hospital):
-
+    print(request)
     taken_usernames = Username.objects.values_list('username').all()
     username = random.choice(ADJECTIVES) + random.choice(ANIMALS)
     
     while username in taken_usernames :
         username = random.choice(ADJECTIVES) + random.choice(ANIMALS)
-    Username.objects.create(username=username)
+    user = Username.objects.create(username=username)
     overall_spot = 0
     time = 0
     queue = Queue.objects.get(hospital = hospital)
@@ -46,27 +45,29 @@ def time(request, severity, hospital):
     elif severity == 2 :
         spot = queue.red
         overall_spot = (queue.blue + spot)
-        time = overall_spot * 5
+        
     elif severity == 3 :
         spot = queue.yellow
         overall_spot = (queue.blue + queue.red + spot)
-        time = overall_spot * 5
+        
     elif severity == 4 :
         spot = queue.green
         overall_spot = (queue.blue + queue.red + queue.yellow + spot)
-        time = overall_spot * 5
+        
     else :
         spot = queue.white
         overall_spot = (queue.blue + queue.red + queue.yellow + queue.green + spot) 
-        time = overall_spot * 5
+    time = overall_spot * 5
 
+    user.overall_spot = overall_spot
     
 
 
     response = render(request, "chat/time.html", {"hospital": hospital, "severity": severity, "time": time})
     response.set_cookie('username', username)
-    response.set_cookie('spot', spot)
+    response.set_cookie('overall_spot', overall_spot)
     response.set_cookie('severity', severity)
+    response.set_cookie('hospital', hospital)
     return response
 
 def admin(request):
@@ -92,7 +93,31 @@ def qr(request):
     else :
         queue[0].white += 1
     queue[0].save()
- 
+    patients = Username.objects.filter(severity__gt=severity)
+    
+    for patient in patients :
+        patient.overall_spot += 1
+        patient.save()
+
     return render(request, "chat/qr.html", {"hospital": request.POST['hospital'],"severity": request.POST['severity']})
 
+def treated(request, hospital, overall_spot, severity):
 
+    queue = Queue.objects.get(hospital = hospital)
+    if severity == 1 :
+        queue.blue -= 1
+    elif severity == 2 :
+        queue.red -= 1
+    elif severity == 3 :
+        queue.yellow -= 1
+    elif severity == 4 :
+        queue.green -= 1
+    elif severity == 5 :
+        queue.white -= 1
+    queue.save()
+
+    patients = Username.objects.filter(overall_spot__lt=overall_spot)
+    for patient in patients :
+        patient.overall_spot -= 1
+        patient.save()
+    return render(request)

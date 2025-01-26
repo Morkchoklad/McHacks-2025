@@ -10,7 +10,7 @@ class Queue(models.Model):
 
 class Username(models.Model):
     username = models.CharField(max_length=50)
-    spot = models.IntegerField(default= 0)
+    overall_spot = models.IntegerField(default= 0)
     severity = models.IntegerField(default= 5)
 
 class Message(models.Model):

@@ -38,15 +38,15 @@
     <div>
         
     </div>
-    <div style="align-content: center; display: flex;">
+    <div style="align-content: center; display: flex; flex-direction: column; color: #0288d1;">
 
-        <div>
+        <div style="margin: auto; text-align: center;">
             {% for i in messages %}
-                <div style="text-align: center; margin-top: 10px; padding: 5%; border-radius: 10%; font-size: small;" {{i.username}} : {{i.text}}</div>
+                <div>{{i.username}} : {{i.text}}</div> 
             {% endfor %}
         </div>
-
-        <div style="margin: auto; margin-top: 40%;">
+        <br>
+        <div style="margin: auto; margin-top: 30%;">
             <input id='boite' type="text" >
             <br>
             <div style="align-content: center; display: flex; margin-top: 10%;">
@@ -54,7 +54,9 @@
             </div>
             
         </div>
-
+        <div style="align-content: center; display: flex;">
+          <button style="margin: auto; margin-top: 10%" onclick='window.history.go(-1); return false'>Back</button>
+      </div>
     </div>
 </body>
 
