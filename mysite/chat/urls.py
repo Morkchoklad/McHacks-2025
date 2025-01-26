@@ -1,6 +1,6 @@
 # chat/urls.py
 from django.urls import path, re_path
-
+from chat.views import chat_box
 from . import views
 
 urlpatterns = [
@@ -10,5 +10,5 @@ urlpatterns = [
     path("admin/", views.admin),
     path("admin/qr/", views.qr),
     path("admin/<int:severity>/<str:hospital>/", views.time),    
-    path("<str:room_name>/", views.room, name="room")
+    path("chat/<str:chat_box_name>/", views.chat_box, name="chat"),
 ]

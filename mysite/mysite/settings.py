@@ -15,7 +15,10 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+ADJECTIVES = ['Articulated','Blithesome','Charismatic','Dependable','Enlightened','Flexible','Glimmering','Inquisitive','Knowledgeable','Lustrous','Mirthful','Nice','Observant','Polite']
+ANIMALS = ['Alpaca','Barnacle','Cat','Dog','Eagle','Ferret','Gecko','Hare','Ibis','Jaguar','Kangaroo','Ladybug','Marmot','Nautilus','Ocelot','Penguin']
+COLORTOSEVERITY = {'blue' : 1, 'red' : 2, 'yellow' : 3, 'green' : 4, 'white' : 5}
+SEVERITYTOCOLOR = {1 : 'blue' ,   2 : 'red' ,   3 : 'yellow' ,   4 : 'green' ,   5 : 'white' }
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -31,8 +34,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
     'daphne',
     'chat',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -123,12 +128,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-ASGI_APPLICATION = "mysite.asgi.application"
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
-        },
-    },
-}

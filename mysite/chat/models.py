@@ -8,3 +8,7 @@ class Queue(models.Model):
     green = models.IntegerField(default=0)
     white = models.IntegerField(default=0)
 
+class Username(models.Model):
+    username = models.CharField(max_length=50)
+    spot = models.IntegerField(default= 0)
+    severity = models.IntegerField(default= 5)
