@@ -2,14 +2,25 @@
 from django.shortcuts import render,  get_object_or_404
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.http import HttpResponse
-from chat.models import Queue, Username
+from chat.models import Queue, Username, Message
 import random
 from mysite.settings import ADJECTIVES, ANIMALS
 
 
-def chat_box(request, chat_box_name):
+def chat(request):
     # we will get the chatbox name from the url
-    return render(request, "chatbox.html", {"chat_box_name": chat_box_name})
+    messages = Message.objects.all().order_by('-id').values()[:10]
+    print(messages)
+    return render(request, "chat/chat.html", {'messages':messages})
+
+def send_message(request, message, user):
+    new_message = Message.objects.create(username = user,text = message)
+
+    location = 'http://127.0.0.1:8000/chat/chat/'
+    res = HttpResponse(location, status=302)
+    res['Location'] = location
+    return res
+    
 
 def index(request):
     return render(request, "chat/index.html")
@@ -85,5 +96,3 @@ def qr(request):
     return render(request, "chat/qr.html", {"hospital": request.POST['hospital'],"severity": request.POST['severity']})
 
 
-def room(request, room_name):
-    return render(request, "chat/room.html", {"room_name": room_name})  

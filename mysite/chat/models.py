@@ -12,3 +12,7 @@ class Username(models.Model):
     username = models.CharField(max_length=50)
     spot = models.IntegerField(default= 0)
     severity = models.IntegerField(default= 5)
+
+class Message(models.Model):
+    username = models.CharField(max_length=50)
+    text = models.CharField(max_length=200)

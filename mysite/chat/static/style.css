@@ -58,3 +58,17 @@ input[type=text] {
 	padding: .4em;
 	color: #29b6f6;
 }
+
+button {
+	appearance: none;
+	border: .2em solid #29b6f6;
+	background: white;
+	padding: .85em 1.5em;
+	color: #29b6f6;
+	border-radius: 2em;
+	transition: 1s;
+	&:hover, &:focus, &:active {
+		background: #29b6f6;
+		color: #fff;
+	}
+}
