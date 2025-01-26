@@ -66,3 +66,32 @@ input[type=radio] {
 	}
 }
 
+input[type=submit] {
+    margin-top: 5%;
+	appearance: none;
+	border: .2em solid #1b5e3a;
+	background: white;
+	padding: .85em 1.5em;
+	color: #1b5e3a;
+	border-radius: 2em;
+	transition: 1s;
+	&:hover, &:focus, &:active {
+		background: #1b5e3a;
+		color: #fff;
+	}
+}
+
+button {
+	appearance: none;
+	border: .2em solid #1b5e3a;
+	background: white;
+	padding: .85em 1.5em;
+	color: #1b5e3a;
+	border-radius: 2em;
+	transition: 1s;
+	&:hover, &:focus, &:active {
+		background: #1b5e3a;
+		color: #fff;
+	}
+}
+

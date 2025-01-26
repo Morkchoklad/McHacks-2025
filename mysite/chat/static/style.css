@@ -11,9 +11,33 @@ html {
     overflow: hidden;
 }
 
-h1 {
-    color: #f44336; 
-    
+
+
+
+
+.triage1 {
+    fill: #1b1a46;
+    color: #1b1a46;
+}
+
+.triage2 {
+    color: #f44336;
+    fill: #f44336;
+}
+
+.triage3 {
+    color: #ffee58;
+    fill: #ffee58;
+}
+
+.triage4 {
+    color: #1b5e3a;
+    fill: #1b5e3a;
+}
+
+.triage5 {
+    fill: white;
+    color: white;
 }
 
 input[type=text] {

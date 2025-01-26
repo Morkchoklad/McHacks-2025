@@ -1,0 +1,25 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'admin.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100..900&display=swap" rel="stylesheet">
+<html>
+    <body style="height: 100%;">
+        <div style="align-content: center; display: flex;">
+            <div style="margin: auto; margin-top: 10%;">
+                <img src="/static/{{hospital}}-{{severity}}.png" alt="{{hospital}}-{{severity}}" >
+            </div>
+
+            
+            
+        </div>
+
+        <div style="align-content: center; display: flex;">
+            <button style="margin: auto; margin-top: 10%" onclick="location.href = '../'">Back</button>
+        </div>
+    </body>
+
+</html>
+
+

@@ -9,7 +9,8 @@
     <body>
         <div style="justify-content: center; display: flex;">
 
-            <form style="margin-top:15%;">
+            <form action="./qr/" method="post"  style="margin-top:15%;">
+                {% csrf_token %}
                 <div style="justify-content: center; display: flex; flex-direction: column;">
                     <div>
                         <label for="hospital">Hospital:</label><br>
@@ -20,29 +21,32 @@
                     <div style="justify-content: center; display: flex; margin-top: 5%;">
                         
                         <div style="margin: auto; justify-content: center; display: flex; flex-direction: column;">
-                            <input type="radio" id="html" name="severity" value="HTML">
-                            <label style="text-align: center;" for="html">1</label><br>
+                            <input type="radio" id="1" name="severity" value="1">
+                            <label style="text-align: center;" for="severity">1</label><br>
                         </div>
                         <div style="margin: auto; justify-content: center; display: flex; flex-direction: column;">
-                            <input style="margin: auto;" type="radio" id="html" name="severity" value="HTML">
-                            <label style="text-align: center;" for="html">2</label><br>
+                            <input style="margin: auto;" type="radio" id="2" name="severity" value="2">
+                            <label style="text-align: center;" for="severity">2</label><br>
                         </div>
                         <div style="margin: auto; justify-content: center; display: flex; flex-direction: column;">
-                            <input style="margin: auto;" type="radio" id="html" name="severity" value="HTML">
-                            <label style="text-align: center;" for="html">3</label><br>
+                            <input style="margin: auto;" type="radio" id="3" name="severity" value="3">
+                            <label style="text-align: center;" for="severity">3</label><br>
                         </div>
                         <div style="margin: auto; justify-content: center; display: flex; flex-direction: column;">
-                            <input style="margin: auto;" type="radio" id="html" name="severity" value="HTML">
-                            <label style="text-align: center;" for="html">4</label><br>
+                            <input style="margin: auto;" type="radio" id="4" name="severity" value="4">
+                            <label style="text-align: center;" for="severity">4</label><br>
                         </div>
                         <div style="margin: auto; justify-content: center; display: flex; flex-direction: column;">
-                            <input style="margin: auto;" type="radio" id="html" name="severity" value="HTML">
-                            <label style="text-align: center;" for="html">5</label><br>
+                            <input style="margin: auto;" type="radio" id="5" name="severity" value="5">
+                            <label style="text-align: center;" for="severity">5</label><br>
                         </div>
-
+                        
+                        
 
                     </div>
-                        
+                    <div style="justify-content: center; display: flex;" >
+                        <input type="submit" onclick="location.href = '/chat/{{severity}}'"></div>
+                    </div>
                         
                     </div>
                 </div>
